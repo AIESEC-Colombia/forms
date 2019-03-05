@@ -122,8 +122,7 @@ class FormsController extends Controller
         if ($request->ajax()) {
             try {
 
-                throw new \Exception('faled');
-                /*getItemPodio($request);
+                getItemPodio($request);
 
                 preg_match('/<meta name="csrf-token" content="(.*)" \/>/', initCurl(), $matches);
                 $gis_token = substr(explode(' ', $matches[1])[0], 0, -1);
@@ -137,7 +136,7 @@ class FormsController extends Controller
 
                 rtrim($fields_string, '&');
 
-                $response = initCurlAutentication($fields, $fields_string);*/
+                $response = initCurlAutentication($fields, $fields_string);
 
                 return response()->json(['response' => true]);
 
