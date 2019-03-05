@@ -1,0 +1,8 @@
+.alert-messages {
+  width: 100%;
+  padding: 0.5em;
+  background: #e9605c;
+  color: #fff;
+  display: none;
+}
+
