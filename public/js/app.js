@@ -36981,6 +36981,7 @@ var getData = function getData() {
     }
 
     data[field.name] = field.value;
+    data['isVoluntary'] = btnRegister.data('is-voluntary') || null;
   });
   return data;
 };
@@ -36993,6 +36994,7 @@ btnRegister.click(function (e) {
   alertError.hide();
   errorLists.empty();
   var data = getData();
+  console.log(data.isVoluntary);
   $.post('store', data).then(function (_ref) {
     var response = _ref.response;
 

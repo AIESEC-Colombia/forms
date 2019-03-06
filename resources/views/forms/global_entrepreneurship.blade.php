@@ -149,7 +149,7 @@
             </label>
         </p>
         <div class="input-field col s12">
-            <a data-url="inscripcion-exitosa-voluntario" data-is-voluntary="true"
+            <a data-url="inscripcion-exitosa-voluntario"
                class="waves-effect waves-light btn" id="btn-register"
                style="background-color: '#30c39e'">@lang('forms.register')</a>
         </div>

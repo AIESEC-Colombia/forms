@@ -76,33 +76,33 @@ function getItemPodio(Request $request)
 
         if ($request->get('isVoluntary')) {
             $fields = new PodioItemFieldCollection([
-                new PodioTextItemField(["external_id" => "titulo", "values" => $request->get('firstName')]),
-                new PodioTextItemField(["external_id" => "lastname", "values" => $request->get('lastName')],
+                new PodioTextItemField(["external_id" => "titulo", "values" => $request->get('first_name')]),
+                new PodioTextItemField(["external_id" => "lastname", "values" => $request->get('last_name')],
                     new PodioTextItemField(["external_id" => "phone-2", "values" => $request->get('phone')]),
-                    new PodioTextItemField(["external_id" => "cellphone-2", "values" => $request->get('movil')]),
+                    new PodioTextItemField(["external_id" => "cellphone-2", "values" => $request->get('cellphone')]),
                     new PodioCategoryItemField(["external_id" => "email-2", "values" => $request->get('mail')]),
                     new PodioCategoryItemField(["external_id" => "iduniversity", "values" => $request->get('university')]),
-                    new PodioCategoryItemField(["external_id" => "university", "values" => $request->get('universityName')]),
+                    new PodioCategoryItemField(["external_id" => "university", "values" => $request->get('university_name')]),
                     new PodioCategoryItemField(["external_id" => "howmet-2", "values" => (int)$request->get('organization')]),
-                    new PodioCategoryItemField(["external_id" => "fecha-de-viaje", "values" => (int)$request->get('travelDate')]),
-                    new PodioCategoryItemField(["external_id" => "preferencia-de-contacto", "values" => (int)$request->get('preferenceContact')]),
+                    new PodioCategoryItemField(["external_id" => "fecha-de-viaje", "values" => (int)$request->get('travel_date')]),
+                    new PodioCategoryItemField(["external_id" => "preferencia-de-contacto", "values" => (int)$request->get('preference_contact')]),
                     new PodioCategoryItemField(["external_id" => "lc", "values" => getCommittee((int)$request->get('university'))]))
             ]);
         } else {
             $fields = new PodioItemFieldCollection([
-                new PodioTextItemField(["external_id" => "titulo", "values" => $request->get('firstName')]),
-                new PodioTextItemField(["external_id" => "lastname", "values" => $request->get('lastName')],
+                new PodioTextItemField(["external_id" => "titulo", "values" => $request->get('first_name')]),
+                new PodioTextItemField(["external_id" => "lastname", "values" => $request->get('last_name')],
                     new PodioTextItemField(["external_id" => "phone-2", "values" => $request->get('phone')]),
-                    new PodioTextItemField(["external_id" => "cellphone-2", "values" => $request->get('movil')]),
+                    new PodioTextItemField(["external_id" => "cellphone-2", "values" => $request->get('cellphone')]),
                     new PodioCategoryItemField(["external_id" => "email-2", "values" => $request->get('mail')]),
                     new PodioCategoryItemField(["external_id" => "iduniversity", "values" => $request->get('university')]),
-                    new PodioCategoryItemField(["external_id" => "university", "values" => $request->get('universityName')]),
+                    new PodioCategoryItemField(["external_id" => "university", "values" => $request->get('university_name')]),
                     new PodioCategoryItemField(["external_id" => "howmet-2", "values" => (int)$request->get('organization')]),
-                    new PodioCategoryItemField(["external_id" => "fecha-de-viaje", "values" => (int)$request->get('travelDate')]),
-                    new PodioCategoryItemField(["external_id" => "preferencia-de-contacto", "values" => (int)$request->get('preferenceContact')]),
-                    new PodioCategoryItemField(["external_id" => "nivel-de-ingles", "values" => (int)$request->get('englishLevel')]),
+                    new PodioCategoryItemField(["external_id" => "fecha-de-viaje", "values" => (int)$request->get('travel_date')]),
+                    new PodioCategoryItemField(["external_id" => "preferencia-de-contacto", "values" => (int)$request->get('preference_contact')]),
+                    new PodioCategoryItemField(["external_id" => "nivel-de-ingles", "values" => (int)$request->get('english_level')]),
                     new PodioCategoryItemField(["external_id" => "experiencia-de-trabajo", "values" => (int)$request->get('experience')]),
-                    new PodioCategoryItemField(["external_id" => "carrera", "values" => $request->get('careerName')]),
+                    new PodioCategoryItemField(["external_id" => "carrera", "values" => $request->get('career_name')]),
                     new PodioCategoryItemField(["external_id" => "semestre", "values" => (int)$request->get('semester')]),
                     new PodioCategoryItemField(["external_id" => "worksfield", "values" => $request->get('activities')]),
                     new PodioCategoryItemField(["external_id" => "lc", "values" => getCommittee((int)$request->get('university'))]))
@@ -128,10 +128,10 @@ function getFieldsExpa(Request $request, $gis_token): array
     return [
         'authenticity_token' => htmlspecialchars($gis_token),
         'user[email]' => $request->get('mail'),
-        'user[first_name]' => $request->get('firstName'),
-        'user[last_name]' => $request->get('lastName'),
+        'user[first_name]' => $request->get('first_name'),
+        'user[last_name]' => $request->get('last_name'),
         'user[password]' => $request->get('password'),
-        'user[phone]' => $request->get('movil'),
+        'user[phone]' => $request->get('cellphone'),
         'user[country]' => config('app.colombia_name'),
         'user[mc]' => config('app.colombia_id'),
         'user[lc_input]' => $request->get('university'),
@@ -157,6 +157,8 @@ function initCurl()
         $result = curl_exec($curl);
         curl_close($curl);
 
+
+
         return $result;
     } catch (\Exception $e) {
         new Exception($e);
@@ -166,7 +168,7 @@ function initCurl()
 /**
  * @return bool|string
  */
-function initCurlAutentication($fields,$fields_string)
+function initCurlAutentication($fields, $fields_string)
 {
     try {
         $url = "https://auth.aiesec.org/users";
@@ -181,7 +183,9 @@ function initCurlAutentication($fields,$fields_string)
 
         $result = curl_exec($ch2);
 
+        $err = curl_error($ch2);
         curl_close($ch2);
+
         return $result;
 
     } catch (\Exception $e) {

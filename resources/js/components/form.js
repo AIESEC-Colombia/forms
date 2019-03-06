@@ -34,7 +34,9 @@ const getData = () => {
         }
 
 
-        data[field.name] = field.value
+        data[field.name] = field.value;
+
+        data['isVoluntary'] = btnRegister.data('is-voluntary') || null
     });
 
     return data;
@@ -43,13 +45,15 @@ const getData = () => {
 btnRegister.click(e => {
 
     if (!$("#terms").is(':checked')) {
-         return swal('', 'Debe aceptar los terminos y condiciones.', 'info');
+        return swal('', 'Debe aceptar los terminos y condiciones.', 'info');
     }
 
     alertError.hide();
     errorLists.empty();
 
     let data = getData();
+
+    console.log(data.isVoluntary);
 
     $.post('store', data)
         .then(({response}) => {

@@ -129,6 +129,8 @@ class FormsController extends Controller
 
                 $fields = getFieldsExpa($request, $gis_token);
 
+
+
                 $fields_string = "";
                 foreach ($fields as $key => $value) {
                     $fields_string .= $key . '=' . urlencode($value) . '&';
@@ -138,7 +140,7 @@ class FormsController extends Controller
 
                 $response = initCurlAutentication($fields, $fields_string);
 
-                return response()->json(['response' => true]);
+                return response()->json(['response' => $response ?? null]);
 
 
             } catch (\Exception $e) {
