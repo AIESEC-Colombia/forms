@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-
+        @include('forms.messages')
         <div class="row" id="form">
             <div class="col s12 m12">
                 <h2 class="header" id="title">@lang('forms.entrepreneurship')</h2>
@@ -52,8 +52,8 @@
             </div>
             <div class="input-field col s12 form-validate">
                 <i class="material-icons prefix">vpn_key</i>
-                <input id="password_confirmed" name="password_confirmed" type="password" class="validate">
-                <label for="password_confirmed">@lang('forms.password_confirmed')*</label>
+                <input id="password_confirmation" name="password_confirmation" type="password" class="validate">
+                <label for="password_confirmation">@lang('forms.password_confirmation')*</label>
             </div>
             <div class="input-field col s12 form-validate">
                 <i class="material-icons prefix">email</i>

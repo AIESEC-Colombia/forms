@@ -36,12 +36,20 @@ btnRegister.click(e => {
             data['career_name'] = $("#career option:selected").text();
         }
 
+        if (field.name === 'terms') {
+            field.value = $("#terms").is(':checked') ? 1 : null
+        }
+
         data[field.name] = field.value
     });
 
     $.post('store', data)
-        .then(response => {
-            console.log(response)
+        .then(({response}) => {
+
+            if(response){
+                //vemos que se hace jeje
+            }
+
         }).catch(({status, responseText}) => {
 
         if (status === 422) {
@@ -54,7 +62,7 @@ btnRegister.click(e => {
             });
 
         } else {
-            swal('Error', 'algo salio mal, por favor vuelva a intenterlo', 'danger');
+            swal('Error', 'algo salio mal, por favor vuelva a intenterlo', 'error');
         }
     })
 

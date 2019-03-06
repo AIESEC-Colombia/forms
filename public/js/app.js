@@ -36981,6 +36981,10 @@ btnRegister.click(function (e) {
       data['career_name'] = $("#career option:selected").text();
     }
 
+    if (field.name === 'terms') {
+      field.value = $("#terms").is(':checked') ? 1 : null;
+    }
+
     data[field.name] = field.value;
   });
   $.post('store', data).then(function (response) {
@@ -36999,7 +37003,7 @@ btnRegister.click(function (e) {
         }, 50);
       });
     } else {
-      sweetalert__WEBPACK_IMPORTED_MODULE_0___default()('Error', 'algo salio mal, por favor vuelva a intenterlo', 'danger');
+      sweetalert__WEBPACK_IMPORTED_MODULE_0___default()('Error', 'algo salio mal, por favor vuelva a intenterlo', 'error');
     }
   });
 });

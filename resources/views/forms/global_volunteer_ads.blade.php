@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-
+        @include('forms.messages')
         <div class="row" id="form">
             <div class="col s12 m12">
                 <h2 class="header" id="title" style="background-color: '#30c39e'">@lang('forms.voluntary')</h2>
@@ -89,7 +89,7 @@
             <p>
                 <label class="form-validate">
                     <input type="checkbox" id="terms" name="terms"/>
-                    <span>>@lang('forms.first_terms_message') <a
+                    <span>@lang('forms.first_terms_message') <a
                                 id="btn-term"> @lang('forms.last_terms_message')</a></span>
                 </label>
             </p>
