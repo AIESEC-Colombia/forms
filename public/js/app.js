@@ -36964,9 +36964,8 @@ btnTerm.click(function (e) {
   e.preventDefault();
   window.open("http://aieseccolombia.org/wp-content/uploads/2017/02/AVISO-DE-PRIVACIDAD-1.pdf");
 });
-btnRegister.click(function (e) {
-  alertError.hide();
-  errorLists.empty();
+
+var getData = function getData() {
   var data = {};
   form.find('.form-validate').each(function (index, item) {
     var _$$find = $(item).find('[name]'),
@@ -36981,17 +36980,27 @@ btnRegister.click(function (e) {
       data['career_name'] = $("#career option:selected").text();
     }
 
-    if (field.name === 'terms') {
-      field.value = $("#terms").is(':checked') ? 1 : null;
-    }
-
     data[field.name] = field.value;
   });
-  $.post('store', data).then(function (response) {
-    console.log(response);
-  }).catch(function (_ref) {
-    var status = _ref.status,
-        responseText = _ref.responseText;
+  return data;
+};
+
+btnRegister.click(function (e) {
+  if (!$("#terms").is(':checked')) {
+    return sweetalert__WEBPACK_IMPORTED_MODULE_0___default()('', 'Debe aceptar los terminos y condiciones.', 'info');
+  }
+
+  alertError.hide();
+  errorLists.empty();
+  var data = getData();
+  $.post('store', data).then(function (_ref) {
+    var response = _ref.response;
+
+    if (response) {//vemos que se hace jeje
+    }
+  }).catch(function (_ref2) {
+    var status = _ref2.status,
+        responseText = _ref2.responseText;
 
     if (status === 422) {
       var dataJson = $.parseJSON(responseText);

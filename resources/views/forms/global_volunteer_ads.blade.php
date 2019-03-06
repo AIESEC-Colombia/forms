@@ -85,19 +85,18 @@
                 </select>
                 <label>@lang('forms.preference_contact')*</label>
             </div>
-
-            <p>
-                <label class="form-validate">
-                    <input type="checkbox" id="terms" name="terms"/>
-                    <span>@lang('forms.first_terms_message') <a
-                                id="btn-term"> @lang('forms.last_terms_message')</a></span>
-                </label>
-            </p>
-            <div class="input-field col s12">
-                <a data-url="inscripcion-exitosa-voluntario" data-is-voluntary="true"
-                   class="waves-effect waves-light btn"  id="btn-register"
-                   style="background-color: '#30c39e'">@lang('forms.register')</a>
-            </div>
+        </div>
+        <p>
+            <label>
+                <input type="checkbox" id="terms" name="terms"/>
+                <span>@lang('forms.first_terms_message') <a
+                            id="btn-term"> @lang('forms.last_terms_message')</a></span>
+            </label>
+        </p>
+        <div class="input-field col s12">
+            <a data-url="inscripcion-exitosa-voluntario" data-is-voluntary="true"
+               class="waves-effect waves-light btn" id="btn-register"
+               style="background-color: '#30c39e'">@lang('forms.register')</a>
         </div>
     </div>
 @endsection

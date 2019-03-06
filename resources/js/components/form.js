@@ -8,7 +8,6 @@ $.ajaxSetup({
 });
 
 
-
 const form = $("#form"),
     btnRegister = $("#btn-register"),
     btnTerm = $("#btn-term"),
@@ -21,9 +20,7 @@ btnTerm.click(e => {
     window.open("http://aieseccolombia.org/wp-content/uploads/2017/02/AVISO-DE-PRIVACIDAD-1.pdf");
 });
 
-btnRegister.click(e => {
-    alertError.hide();
-    errorLists.empty();
+const getData = () => {
     let data = {};
     form.find('.form-validate').each((index, item) => {
         let [field] = $(item).find('[name]');
@@ -36,17 +33,28 @@ btnRegister.click(e => {
             data['career_name'] = $("#career option:selected").text();
         }
 
-        if (field.name === 'terms') {
-            field.value = $("#terms").is(':checked') ? 1 : null
-        }
 
         data[field.name] = field.value
     });
 
+    return data;
+};
+
+btnRegister.click(e => {
+
+    if (!$("#terms").is(':checked')) {
+         return swal('', 'Debe aceptar los terminos y condiciones.', 'info');
+    }
+
+    alertError.hide();
+    errorLists.empty();
+
+    let data = getData();
+
     $.post('store', data)
         .then(({response}) => {
 
-            if(response){
+            if (response) {
                 //vemos que se hace jeje
             }
 
@@ -57,7 +65,7 @@ btnRegister.click(e => {
             $.each(dataJson.errors, function (key, value) {
                 errorLists.append(`<li>${value}</li>`);
                 alertError.show();
-                $("html, body").delay(100).animate({ scrollTop: alertError.offset().top }, 50);
+                $("html, body").delay(100).animate({scrollTop: alertError.offset().top}, 50);
 
             });
 
