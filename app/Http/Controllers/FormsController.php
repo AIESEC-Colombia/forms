@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateFormsRequest;
 use Illuminate\Http\Request;
 
 class FormsController extends Controller
@@ -41,7 +40,7 @@ class FormsController extends Controller
     public function indexTalent()
     {
         $lists = config('list');
-        return view('forms.global_talent_ads', [
+        return view('forms.global_talent', [
             'universities' => getUniversities(),
             'semester' => $lists['lists']['semester'],
             'career' => $lists['lists']['career'],
@@ -114,10 +113,10 @@ class FormsController extends Controller
     }
 
     /**
-     * @param CreateFormsRequest $request
+     * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(CreateFormsRequest $request)
+    public function store(Request $request)
     {
         if ($request->ajax()) {
             try {
@@ -128,7 +127,6 @@ class FormsController extends Controller
                 $gis_token = substr(explode(' ', $matches[1])[0], 0, -1);
 
                 $fields = getFieldsExpa($request, $gis_token);
-
 
 
                 $fields_string = "";

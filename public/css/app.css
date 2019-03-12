@@ -1,8 +1,200 @@
-.alert-messages {
-  width: 100%;
-  padding: 0.5em;
-  background: #e9605c;
-  color: #fff;
+*,
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+.form-step {
+  text-align: center;
+  position: relative;
+  margin-top: 30px;
+}
+
+.form-step fieldset {
+  border: 0 none;
+  border-radius: 0;
+  padding: 20px 0;
+  box-sizing: border-box;
+  margin: 0 10%;
+  position: relative;
+}
+
+.form-step fieldset:not(:first-of-type) {
   display: none;
+}
+
+.form-step input,
+.form-step select,
+.form-step textarea {
+  height: calc(1.5em + .5rem + 2px);
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.5rem;
+  font-size: 0.875rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 0;
+  border-bottom: 0.1em solid rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.form-step input option,
+.form-step select option,
+.form-step textarea option {
+  color: #979ea8;
+}
+
+.form-step input::-webkit-input-placeholder,
+.form-step select::-webkit-input-placeholder,
+.form-step textarea::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.form-step input:-ms-input-placeholder,
+.form-step select:-ms-input-placeholder,
+.form-step textarea:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.form-step input::-ms-input-placeholder,
+.form-step select::-ms-input-placeholder,
+.form-step textarea::-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.form-step input::placeholder,
+.form-step select::placeholder,
+.form-step textarea::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.form-step input:focus,
+.form-step select:focus,
+.form-step textarea:focus {
+  box-shadow: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  outline-width: 0;
+  transition: All 0.5s ease-in;
+  -webkit-transition: All 0.5s ease-in;
+  -moz-transition: All 0.5s ease-in;
+  -o-transition: All 0.5s ease-in;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.form-step label {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 0.2em;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.bg-voluntary {
+  background: #ef4132;
+}
+
+.bg-entrepreneur {
+  background: #34bc9b;
+}
+
+.bg-talent {
+  background: #1790a1;
+}
+
+.invalid-feedback {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.form-group {
+  margin-bottom: 0.5em;
+}
+
+.btn.btn-primary {
+  background: none;
+  color: #fff;
+  border-color: #feded9;
+}
+
+.btn.btn-primary:focus,
+.btn.btn-primary:active,
+.btn.btn-primary:hover {
+  background: none;
+  color: #fff;
+  border-color: #feded9;
+}
+
+.btn.btn-sm.btn-voluntary {
+  background: #fff;
+  color: #ef4132;
+  border-color: #feded9;
+}
+
+.btn.btn-sm.btn-voluntary:focus,
+.btn.btn-sm.btn-voluntary:active,
+.btn.btn-sm.btn-voluntary:hover {
+  background: #fff;
+  color: #ef4132;
+  border-color: #feded9;
+}
+
+.btn.btn-sm.btn-entrepreneur {
+  background: #fff;
+  color: #34bc9b;
+  border-color: #feded9;
+}
+
+.btn.btn-sm.btn-entrepreneur:focus,
+.btn.btn-sm.btn-entrepreneur:active,
+.btn.btn-sm.btn-entrepreneur:hover {
+  background: #fff;
+  color: #34bc9b;
+  border-color: #feded9;
+}
+
+.btn.btn-sm.btn-talent {
+  background: #fff;
+  color: #1790a1;
+  border-color: #feded9;
+}
+
+.btn.btn-sm.btn-talent:focus,
+.btn.btn-sm.btn-talent:active,
+.btn.btn-sm.btn-talent:hover {
+  background: #fff;
+  color: #1790a1;
+  border-color: #feded9;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show > .btn-primary.dropdown-toggle,
+.primary:not(:disabled):not(.disabled):active,
+.show > .btn-primary.dropdown-toggle {
+  background: none;
+  color: #fff;
+  border-color: #feded9;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.1em rgba(255, 255, 255, 0.5);
+}
+
+.custom-select.is-invalid,
+.was-validated .custom-select:invalid {
+  border-color: #dc3545;
+  padding-right: calc((1em + .75rem) * 3 / 4 + 1.75rem);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.text-secondary {
+  color: #000 !important;
 }
 

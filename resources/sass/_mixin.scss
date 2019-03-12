@@ -1,0 +1,11 @@
+@mixin btnProduct($bg,$color,$border) {
+  background: $bg;
+  color: $color;
+  border-color: $border;
+
+  &:focus, &:active, &:hover {
+    background: $bg;
+    color: $color;
+    border-color: $border;
+  }
+}

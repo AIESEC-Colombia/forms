@@ -1,0 +1,131 @@
+*, body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+.form-step {
+  text-align: center;
+  position: relative;
+  margin-top: 30px;
+
+  & fieldset {
+    border: 0 none;
+    border-radius: 0;
+    padding: 20px 0;
+    box-sizing: border-box;
+    margin: 0 10%;
+    position: relative;
+
+    &:not(:first-of-type) {
+      display: none;
+    }
+  }
+
+  & input,
+  & select,
+  & textarea {
+    height: calc(1.5em + .5rem + 2px);
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    padding-left: .5rem;
+    font-size: .875rem;
+    background: rgba(255, 255, 255, .1);
+    border: none;
+    border-radius: 0;
+    border-bottom: .1em solid rgba($colorBase, .6);
+    color: rgba(255, 255, 255, .8);
+
+    & option {
+      color: #979ea8;
+    }
+
+    &::placeholder {
+      color: rgba($colorBase, .8);
+    }
+
+    &:focus {
+      -moz-box-shadow: none !important;
+      -webkit-box-shadow: none !important;
+      box-shadow: none !important;
+      border: 1px solid rgba($colorBase, .6);
+      outline-width: 0;
+      transition: All 0.5s ease-in;
+      -webkit-transition: All 0.5s ease-in;
+      -moz-transition: All 0.5s ease-in;
+      -o-transition: All 0.5s ease-in;
+      background: rgba($colorBase, .1);
+    }
+  }
+
+  & label {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin-bottom: .2em;
+    color: rgba($colorBase, .3);
+  }
+}
+
+.bg-voluntary {
+  background: $voluntary;
+}
+
+.bg-entrepreneur {
+  background: $entrepreneur;
+}
+
+.bg-talent {
+  background: $talent;
+}
+
+.invalid-feedback {
+  color: rgba($colorBase, .8);
+}
+
+.form-group {
+  margin-bottom: .5em;
+}
+
+.btn.btn-primary {
+  @include btnProduct(none, $colorBase, $boderBtn);
+}
+
+.btn.btn-sm.btn-voluntary {
+  @include btnProduct($colorBase, $voluntary, $boderBtn);
+}
+
+.btn.btn-sm.btn-entrepreneur {
+  @include btnProduct($colorBase, $entrepreneur, $boderBtn);
+}
+
+.btn.btn-sm.btn-talent {
+  @include btnProduct($colorBase, $talent, $boderBtn);
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle,
+.primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+  background: none;
+  color: $colorBase;
+  border-color: $boderBtn;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.1em rgba($colorBase, .5);
+}
+
+
+.custom-select.is-invalid, .was-validated .custom-select:invalid {
+  border-color: $colorError;
+  padding-right: calc((1em + .75rem) * 3 / 4 + 1.75rem);
+  background-color: rgb($colorBase, .1);
+}
+
+.text-secondary {
+  color: $black !important;
+}
+
