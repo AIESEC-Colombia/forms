@@ -3,6 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+input,select,textarea,h1,h2,h3,h4,h5,h6,p,label,:placeholer{
+  font-family: 'Lato', sans-serif;
+}
 
 html {
   height: 100%;
@@ -29,7 +32,7 @@ html {
   & input,
   & select,
   & textarea {
-    height: calc(1.5em + .5rem + 2px);
+    height: calc(1.5em + .5rem + 20px);
     padding-top: .25rem;
     padding-bottom: .25rem;
     padding-left: .5rem;
@@ -127,5 +130,12 @@ html {
 
 .text-secondary {
   color: $black !important;
+}
+
+.input-group-text {
+  background: rgba($colorBase,.2);
+  color: rgba($colorBase, .3);
+  border-radius: 0;
+  border-color: transparent;
 }
 

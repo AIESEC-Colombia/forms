@@ -8,8 +8,11 @@
                     <h2 class="header" id="title" style="color: #fff">@lang('forms.voluntary')</h2>
                     <p style="color: #fff">@lang('forms.voluntary_message')</p>
                     <fieldset class="step" data-step="0">
-                        <div class="form-group">
+                        <div class="input-group">
                             <label for="">@lang('forms.first_name')*</label>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+                            </div>
                             <input type="text"
                                    class="form-control"
                                    name="first_name"
@@ -22,8 +25,11 @@
                                 <strong></strong>
                             </span>
                         </div>
-                        <div class="form-group">
+                        <div class="input-group">
                             <label for="">@lang('forms.last_name')*</label>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+                            </div>
                             <input type="text"
                                    class="form-control"
                                    name="last_name"
@@ -36,8 +42,11 @@
                                 <strong></strong>
                             </span>
                         </div>
-                        <div class="form-group">
+                        <div class="input-group">
                             <label for="">@lang('forms.phone')*</label>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-phone-square"></i></span>
+                            </div>
                             <input type="number"
                                    class="form-control"
                                    name="phone"
@@ -52,8 +61,11 @@
                                 <strong></strong>
                              </span>
                         </div>
-                        <div class="form-group">
+                        <div class="input-group">
                             <label for="">@lang('forms.cellphone')*</label>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-phone-square"></i></span>
+                            </div>
                             <input type="number"
                                    class="form-control"
                                    name="cellphone"
@@ -68,8 +80,11 @@
                                 <strong></strong>
                             </span>
                         </div>
-                        <div class="form-group">
+                        <div class="input-group">
                             <label for="">@lang('forms.mail')*</label>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope"></i></span>
+                            </div>
                             <input type="email"
                                    class="form-control"
                                    name="email"
@@ -82,8 +97,11 @@
                                 <strong></strong>
                             </span>
                         </div>
-                        <div class="form-group">
+                        <div class="input-group">
                             <label for="">@lang('forms.password')*</label>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-unlock"></i></span>
+                            </div>
                             <input type="password"
                                    class="form-control"
                                    name="password"
@@ -96,8 +114,11 @@
                             <strong></strong>
                         </span>
                         </div>
-                        <div class="form-group">
+                        <div class="input-group">
                             <label for="">@lang('forms.password_confirmation')*</label>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-unlock"></i></span>
+                            </div>
                             <input type="password"
                                    class="form-control"
                                    name="password_confirm"
@@ -111,14 +132,21 @@
                             <strong></strong>
                         </span>
                         </div>
-                        <div class="form-group d-flex justify-content-between">
-                            <button class="btn btn-primary btn-sm btn-cancel" id="cancel">Cancelar</button>
-                            <button class="btn btn-primary btn-sm next btn-voluntary" data-next="1">Siguiente</button>
+                        <div class="form-group d-flex justify-content-between mt-2">
+                            <button class="btn btn-primary btn-sm btn-cancel" id="cancel">
+                                <i class="fas fa-ban"></i> Cancelar
+                            </button>
+                            <button class="btn btn-primary btn-sm next btn-voluntary" data-next="1">
+                                Siguiente <i class="fas fa-arrow-right"></i>
+                            </button>
                         </div>
                     </fieldset>
                     <fieldset class="step" data-step="1">
-                        <div class="form-group">
+                        <div class="input-group">
                             <label for="">@lang('forms.university')*</label>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-list"></i></span>
+                            </div>
                             <select class="custom-select"
                                     name="university"
                                     id="university"
@@ -134,8 +162,11 @@
                                 <strong></strong>
                             </span>
                         </div>
-                        <div class="form-group">
+                        <div class="input-group">
                             <label for="">@lang('forms.organization')*</label>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-list"></i></span>
+                            </div>
                             <select class="custom-select"
                                     name="organization"
                                     id="organization"
@@ -151,8 +182,11 @@
                                 <strong></strong>
                             </span>
                         </div>
-                        <div class="form-group">
+                        <div class="input-group">
                             <label for="">@lang('forms.travel_date')*</label>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-list"></i></span>
+                            </div>
                             <select class="custom-select"
                                     name="travel_date"
                                     id="travel_date"
@@ -168,8 +202,11 @@
                                 <strong></strong>
                             </span>
                         </div>
-                        <div class="form-group">
+                        <div class="input-group">
                             <label for="">@lang('forms.preference_contact')*</label>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-list"></i></span>
+                            </div>
                             <select class="custom-select"
                                     name="preference_contact"
                                     id="preference_contact"
@@ -194,10 +231,13 @@
                                 <a id="btn-term" class="text-secondary"> @lang('forms.last_terms_message')</a>
                             </label>
                         </div>
-                        <div class="form-group d-flex justify-content-between">
-                            <button class="btn btn-primary btn-sm previous btn-voluntary" data-previous="0">Anterior
+                        <div class="form-group d-flex justify-content-between mt-2">
+                            <button class="btn btn-primary btn-sm previous btn-voluntary" data-previous="0">
+                                <i class="fas fa-arrow-left"></i> Anterior
                             </button>
-                            <button class="btn btn-primary btn-sm btn-voluntary" id="submit">Enviar</button>
+                            <button class="btn btn-primary btn-sm btn-voluntary" id="submit" data-voluntary="true">
+                                Enviar <i class="fas fa-location-arrow"></i>
+                            </button>
                         </div>
                     </fieldset>
                 </div>

@@ -33,9 +33,9 @@ cancel.click((e) => {
     window.location.reload();
 });
 
-submit.click(() => {
+submit.click((e) => {
 
-    if(!terms.is(':checked')){
+    if (!terms.is(':checked')) {
         return alert('acepte los terminos y condiciones')
     }
 
@@ -48,13 +48,24 @@ submit.click(() => {
         data[`${value.name}`] = value.value;
         data[`${value.name}_text`] = $(`#${value.id} option:selected`).text();
     });
-    console.log(data);
+
+    data['isVoluntary'] = $(e.currentTarget).data('voluntary') || null;
+    sendAjax(data);
 });
 
 btnTerm.click(e => {
     e.preventDefault();
     alert('redireccionar a los terminos y condiciones')
-})
+});
+
+function sendAjax(data) {
+    $.post('store', data)
+        .then((response) => {
+            console.log(response);
+        }).catch(e => {
+        alert('algo ha salido mal, por favor vuelva a intentarlo')
+    })
+}
 
 function initStep(currentStep) {
     currentStep.find(`[data-validated]`).each((index, value) => {

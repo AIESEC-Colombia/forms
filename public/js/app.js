@@ -36627,19 +36627,13 @@ if (token) {
 } else {
   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
-/**
- * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
- * allows your team to easily build robust real-time web applications.
- */
-// import Echo from 'laravel-echo'
-// window.Pusher = require('pusher-js');
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     encrypted: true
-// });
+
+$.ajaxSetup({
+  headers: {
+    'X-Requested-With': 'XMLHttpRequest',
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
 
 /***/ }),
 
@@ -36682,7 +36676,7 @@ previous.on('click', function (e) {
 cancel.click(function (e) {
   window.location.reload();
 });
-submit.click(function () {
+submit.click(function (e) {
   if (!terms.is(':checked')) {
     return alert('acepte los terminos y condiciones');
   }
@@ -36695,12 +36689,21 @@ submit.click(function () {
     data["".concat(value.name)] = value.value;
     data["".concat(value.name, "_text")] = $("#".concat(value.id, " option:selected")).text();
   });
-  console.log(data);
+  data['isVoluntary'] = $(e.currentTarget).data('voluntary') || null;
+  sendAjax(data);
 });
 btnTerm.click(function (e) {
   e.preventDefault();
   alert('redireccionar a los terminos y condiciones');
 });
+
+function sendAjax(data) {
+  $.post('store', data).then(function (response) {
+    console.log(response);
+  }).catch(function (e) {
+    alert('algo ha salido mal, por favor vuelva a intentarlo');
+  });
+}
 
 function initStep(currentStep) {
   currentStep.find("[data-validated]").each(function (index, value) {

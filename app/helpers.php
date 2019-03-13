@@ -69,10 +69,12 @@ function getUniversities(): ?array
 
 function getItemPodio(Request $request)
 {
-
     try {
         Podio::setup(config('app.podio_client_id'), config('app.podio_client_secret'));
         Podio::authenticate_with_app(config('app.podio_api_id'), config('app.podio_api_token'));
+
+        var_dump($request->all());
+        die;
 
         if ($request->get('isVoluntary')) {
             $fields = new PodioItemFieldCollection([
@@ -80,29 +82,31 @@ function getItemPodio(Request $request)
                 new PodioTextItemField(["external_id" => "lastname", "values" => $request->get('last_name')],
                     new PodioTextItemField(["external_id" => "phone-2", "values" => $request->get('phone')]),
                     new PodioTextItemField(["external_id" => "cellphone-2", "values" => $request->get('cellphone')]),
-                    new PodioCategoryItemField(["external_id" => "email-2", "values" => $request->get('mail')]),
+                    new PodioCategoryItemField(["external_id" => "email-2", "values" => $request->get('email')]),
                     new PodioCategoryItemField(["external_id" => "iduniversity", "values" => $request->get('university')]),
-                    new PodioCategoryItemField(["external_id" => "university", "values" => $request->get('university_name')]),
+                    new PodioCategoryItemField(["external_id" => "university", "values" => $request->get('university_text')]),
                     new PodioCategoryItemField(["external_id" => "howmet-2", "values" => (int)$request->get('organization')]),
                     new PodioCategoryItemField(["external_id" => "fecha-de-viaje", "values" => (int)$request->get('travel_date')]),
                     new PodioCategoryItemField(["external_id" => "preferencia-de-contacto", "values" => (int)$request->get('preference_contact')]),
                     new PodioCategoryItemField(["external_id" => "lc", "values" => getCommittee((int)$request->get('university'))]))
             ]);
         } else {
+
+
             $fields = new PodioItemFieldCollection([
                 new PodioTextItemField(["external_id" => "titulo", "values" => $request->get('first_name')]),
                 new PodioTextItemField(["external_id" => "lastname", "values" => $request->get('last_name')],
                     new PodioTextItemField(["external_id" => "phone-2", "values" => $request->get('phone')]),
                     new PodioTextItemField(["external_id" => "cellphone-2", "values" => $request->get('cellphone')]),
-                    new PodioCategoryItemField(["external_id" => "email-2", "values" => $request->get('mail')]),
+                    new PodioCategoryItemField(["external_id" => "email-2", "values" => $request->get('email')]),
                     new PodioCategoryItemField(["external_id" => "iduniversity", "values" => $request->get('university')]),
-                    new PodioCategoryItemField(["external_id" => "university", "values" => $request->get('university_name')]),
+                    new PodioCategoryItemField(["external_id" => "university", "values" => $request->get('university_text')]),
                     new PodioCategoryItemField(["external_id" => "howmet-2", "values" => (int)$request->get('organization')]),
                     new PodioCategoryItemField(["external_id" => "fecha-de-viaje", "values" => (int)$request->get('travel_date')]),
                     new PodioCategoryItemField(["external_id" => "preferencia-de-contacto", "values" => (int)$request->get('preference_contact')]),
                     new PodioCategoryItemField(["external_id" => "nivel-de-ingles", "values" => (int)$request->get('english_level')]),
                     new PodioCategoryItemField(["external_id" => "experiencia-de-trabajo", "values" => (int)$request->get('experience')]),
-                    new PodioCategoryItemField(["external_id" => "carrera", "values" => $request->get('career_name')]),
+                    new PodioCategoryItemField(["external_id" => "carrera", "values" => $request->get('career_text')]),
                     new PodioCategoryItemField(["external_id" => "semestre", "values" => (int)$request->get('semester')]),
                     new PodioCategoryItemField(["external_id" => "worksfield", "values" => $request->get('activities')]),
                     new PodioCategoryItemField(["external_id" => "lc", "values" => getCommittee((int)$request->get('university'))]))
@@ -127,7 +131,7 @@ function getFieldsExpa(Request $request, $gis_token): array
 {
     return [
         'authenticity_token' => htmlspecialchars($gis_token),
-        'user[email]' => $request->get('mail'),
+        'user[email]' => $request->get('email'),
         'user[first_name]' => $request->get('first_name'),
         'user[last_name]' => $request->get('last_name'),
         'user[password]' => $request->get('password'),
