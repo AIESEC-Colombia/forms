@@ -55,7 +55,7 @@ function getCommittee(int $id): int
 /**
  * @return array|null
  */
-function getUniversities(): ?array
+function getUniversities(): array
 {
     $data = json_decode(file_get_contents("https://gis-api.aiesec.org/v2/lists/mcs_alignments.json"));
 
