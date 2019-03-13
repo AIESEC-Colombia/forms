@@ -142,7 +142,7 @@ class FormsController extends Controller
 
 
             } catch (\Exception $e) {
-                \Log::error('fallo al crear el objeto de podio' . $e);
+                \Log::error($e);
             }
 
         }

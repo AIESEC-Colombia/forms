@@ -1,12 +1,11 @@
 import {validatedFields} from "./validated";
+import swal from 'sweetalert';
 
-const step = $(".step"),
-    next = $(".next"),
+const next = $(".next"),
     previous = $('.previous'),
     submit = $('#submit'),
     cancel = $('#cancel'),
     terms = $("#terms"),
-    validated = $(".validated"),
     btnTerm = $("#btn-term"),
     formStep = $("#form-step");
 
@@ -36,7 +35,7 @@ cancel.click((e) => {
 submit.click((e) => {
 
     if (!terms.is(':checked')) {
-        return alert('acepte los terminos y condiciones')
+        return swal('Debe aceptar los terminos y condiciones', '', 'info');
     }
 
     let data = {};
@@ -55,15 +54,20 @@ submit.click((e) => {
 
 btnTerm.click(e => {
     e.preventDefault();
-    alert('redireccionar a los terminos y condiciones')
+    window.open("http://aieseccolombia.org/wp-content/uploads/2017/02/AVISO-DE-PRIVACIDAD-1.pdf");
 });
 
 function sendAjax(data) {
     $.post('store', data)
-        .then((response) => {
-            console.log(response);
+        .then(({response}) => {
+            if (response) {
+                return swal('Registro creado con exito', '', 'success');
+            } else {
+                return swal('hemos tenido un problema con la conexión, por favor vuelta ha interlo', '', 'error');
+            }
+
         }).catch(e => {
-        alert('algo ha salido mal, por favor vuelva a intentarlo')
+        return swal('hemos tenido un problema con la conexión, por favor vuelta ha interlo', '', 'error');
     })
 }
 

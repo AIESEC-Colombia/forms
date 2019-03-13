@@ -73,9 +73,6 @@ function getItemPodio(Request $request)
         Podio::setup(config('app.podio_client_id'), config('app.podio_client_secret'));
         Podio::authenticate_with_app(config('app.podio_api_id'), config('app.podio_api_token'));
 
-        var_dump($request->all());
-        die;
-
         if ($request->get('isVoluntary')) {
             $fields = new PodioItemFieldCollection([
                 new PodioTextItemField(["external_id" => "titulo", "values" => $request->get('first_name')]),
@@ -151,7 +148,6 @@ function initCurl()
 {
     try {
         $curl = curl_init();
-
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_URL => 'https://auth.aiesec.org/users/sign_in',
@@ -160,10 +156,8 @@ function initCurl()
 
         $result = curl_exec($curl);
         curl_close($curl);
-
-
-
         return $result;
+
     } catch (\Exception $e) {
         new Exception($e);
     }
@@ -180,9 +174,7 @@ function initCurlAutentication($fields, $fields_string)
         curl_setopt($ch2, CURLOPT_URL, $url);
         curl_setopt($ch2, CURLOPT_POST, count($fields));
         curl_setopt($ch2, CURLOPT_POSTFIELDS, $fields_string);
-
         curl_setopt($ch2, CURLOPT_RETURNTRANSFER, TRUE);
-        // give cURL the SSL Cert for Salesforce
         curl_setopt($ch2, CURLOPT_SSL_VERIFYPEER, false);
 
         $result = curl_exec($ch2);
